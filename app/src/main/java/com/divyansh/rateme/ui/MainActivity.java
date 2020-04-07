@@ -8,12 +8,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 import com.divyansh.rateme.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +36,14 @@ public class MainActivity extends AppCompatActivity {
         String minRange = sharedPreferences.getString("minRange", "0");
         String maxRange = sharedPreferences.getString("maxRange", "9");
         saveBtn.setText("Rate " + minRange + " - " + maxRange);
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), RatingActivity.class));
+            }
+        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

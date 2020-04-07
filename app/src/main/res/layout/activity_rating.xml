@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.RatingActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp"
+        android:elevation="10dp"
+        >
+
+        <SeekBar
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:id="@+id/rateMe"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:text="Save"
+        android:id="@+id/rate"
+        android:background="@color/colorPrimary"
+        />
+
+</LinearLayout>
