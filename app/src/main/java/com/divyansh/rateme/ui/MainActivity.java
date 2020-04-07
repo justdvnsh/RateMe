@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.saved_ratings) {
-            // do something
+            startActivity(new Intent(this, SavedRatingsActivity.class));
         }
 
         if (id == R.id.settings) {
