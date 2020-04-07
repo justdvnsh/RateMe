@@ -79,6 +79,7 @@ public class RatingActivity extends AppCompatActivity {
         rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                rateMe.setProgress(0);
                 viewModel.insertRating(new Rating(rating, name.getText().toString(), new Date()));
                 Toast.makeText(getApplicationContext(), String.valueOf(rating), Toast.LENGTH_SHORT).show();
             }

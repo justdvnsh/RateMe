@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
 
 
     private SharedPreferences sharedPreferences;
@@ -25,16 +25,22 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.rate_btn)
     Button saveBtn;
 
+    private String minRange;
+    private String maxRange;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         ButterKnife.bind(this);
 
+
         sharedPreferences = getApplication().getSharedPreferences("Pref", 0);
-        String minRange = sharedPreferences.getString("minRange", "0");
-        String maxRange = sharedPreferences.getString("maxRange", "9");
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+        minRange = sharedPreferences.getString("minRange", "0");
+        maxRange = sharedPreferences.getString("maxRange", "9");
         saveBtn.setText("Rate " + minRange + " - " + maxRange);
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
+    @Override
+    protected void onPause() {
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+        super.onPause();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,5 +77,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals("minRange")) {
+            minRange = sharedPreferences.getString("minRange", "0");
+            saveBtn.setText("Rate " + minRange + " - " + maxRange);
+        }
+
+        if (key.equals("maxRange")) {
+            maxRange = sharedPreferences.getString("maxRange", "9");
+            saveBtn.setText("Rate " + minRange + " - " + maxRange);
+        }
     }
 }

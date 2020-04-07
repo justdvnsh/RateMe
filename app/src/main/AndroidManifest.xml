@@ -18,7 +18,7 @@
             android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.SettingsActivity"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             android:parentActivityName=".ui.MainActivity" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>
