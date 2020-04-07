@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">RateMe</string>
     <string name="card_text">Titanic - Seventeen-year-old Rose hails from an aristocratic family and is set to be married. When she boards the Titanic, she meets Jack Dawson, an artist, and falls in love with him. \n Rate This Movie.</string>
+    <string name="settings_info">This is the Settings Page ! Please set your min and max range here.</string>
+    <string name="settings_info_additional">The Range should be from 0 to 9 only.</string>
+    <string name="min_range_info">Min Range - Cannot be less than 0</string>
+    <string name="max_range_info">Max Range - Cannot be greater than 9</string>
 </resources>
